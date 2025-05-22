@@ -1,5 +1,5 @@
 module PlateMotionSimulator
 
-# Write your package code here.
+  using GLMakie, GeoMakie, GeometryBasics, NCDatasets, Statistics
 
 end
