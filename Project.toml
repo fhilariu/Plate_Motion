@@ -3,7 +3,17 @@ uuid = "d1122746-0d90-4497-876d-e317ed0ddb98"
 authors = ["Felix Hilarius"]
 version = "1.0.0-DEV"
 
+[deps]
+GLMakie = "e9467ef8-e4e7-5192-8a1a-b1aee30e663a"
+GeoMakie = "db073c08-6b98-4ee5-b6a4-5efafb3259c6"
+GeometryBasics = "5c1252a2-5f33-56bf-86c9-59e7332b4326"
+NCDatasets = "85f8d34a-cbdd-5861-8df4-14fed0d494ab"
+
 [compat]
+GLMakie = "0.11.3"
+GeoMakie = "0.7.12"
+GeometryBasics = "0.5.7"
+NCDatasets = "0.14.7"
 julia = "1.6.7"
 
 [extras]
