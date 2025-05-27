@@ -1,5 +1,8 @@
 module PlateMotionSimulator
 
-  using GLMakie, GeoMakie, GeometryBasics, NCDatasets
+using GLMakie
+using NCDatasets
+using GeometryBasics 
+using GeoMakie
 
 end
