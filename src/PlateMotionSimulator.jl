@@ -6,6 +6,9 @@ using GeometryBasics
 using GeoMakie
 
 
+export main
+
+
 # backend for GLMakie
 GLMakie.activate!()
 Makie.inline!(true)
