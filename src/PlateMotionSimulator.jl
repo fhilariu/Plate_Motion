@@ -590,6 +590,4 @@ end
 # call main function
 main()
 
-export GLMakie, NCDatasets, GeometryBasics, GeoMakie
-
 end
