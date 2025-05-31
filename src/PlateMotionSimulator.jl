@@ -47,7 +47,7 @@ Makie.inline!(true)
 # function to extract years and index
 function get_years_and_index()
     # directory of nc files
-    directory     = "Scotese_Wright_2018_Maps_1-88_6minX6min_PaleoDEMS_nc"
+    directory     = joinpath("data", "Scotese_Wright_2018_Maps_1-88_6minX6min_PaleoDEMS_nc")
     nc_files      = filter(f -> endswith(f, ".nc"), readdir(directory))
     sorted_files  = sort(nc_files, by=f -> parse(Int, match(r"(\d+)Ma", f).captures[1]))
     nc_file_paths = joinpath.(directory, sorted_files)
