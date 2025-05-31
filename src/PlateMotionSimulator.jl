@@ -4,9 +4,27 @@ using GLMakie
 using NCDatasets
 using GeometryBasics 
 using GeoMakie
-
+using Downloads
+using Printf
 
 export main
+
+# temporal directory
+function download_dataset()
+    mktempdir() do tmpdir
+        @printf("Temporäres Verzeichnis erstellt unter: %s\n", tmpdir)
+
+        url = "https://example.com/datensatz.csv"
+        local_path = joinpath(tmpdir, "datensatz.csv")
+
+        Downloads.download(url, local_path)
+
+        @printf("Datensatz wurde heruntergeladen nach: %s\n", local_path)
+
+        # Hier könntest du den Datensatz weiterverarbeiten
+        return local_path
+    end
+end
 
 
 # backend for GLMakie
