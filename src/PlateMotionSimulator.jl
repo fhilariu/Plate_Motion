@@ -10,20 +10,32 @@ using Printf
 export main
 
 # temporal directory
-function download_dataset()
-    mktempdir() do tmpdir
-        @printf("Temporäres Verzeichnis erstellt unter: %s\n", tmpdir)
-
-        url = "https://example.com/datensatz.csv"
-        local_path = joinpath(tmpdir, "datensatz.csv")
-
-        Downloads.download(url, local_path)
-
-        @printf("Datensatz wurde heruntergeladen nach: %s\n", local_path)
-
-        # Hier könntest du den Datensatz weiterverarbeiten
-        return local_path
+function download_and_extract(destdir="data")
+    url = "https://zenodo.org/records/5460860/files/Scotese_Wright_2018_Maps_1-88_6minX6min_PaleoDEMS_nc.zip?download=1"
+    zip_path = joinpath(destdir, "dataset.zip")
+    
+    if !isdir(destdir)
+        mkpath(destdir)
     end
+
+    # Download ZIP falls noch nicht da
+    if !isfile(zip_path)
+        println("Downloading dataset...")
+        Downloads.download(url, zip_path)
+    else
+        println("Dataset ZIP already downloaded.")
+    end
+    
+    # Entpacken
+    extracted_folder = joinpath(destdir, "Scotese_Wright_2018_Maps_1-88_6minX6min_PaleoDEMS_nc")
+    if !isdir(extracted_folder)
+        println("Extracting ZIP...")
+        run(`unzip -q $zip_path -d $destdir`)
+    else
+        println("Dataset already extracted.")
+    end
+
+    return extracted_folder
 end
 
 
@@ -278,6 +290,8 @@ end
 
 # main function to run simulation
 function main()
+    data_dir = download_and_extract("data")
+    
     α = Observable(50.0)
     lon_data, lat_data, el_data, all_elevation = initialize_globe_attributes()
     lon_data, lat_data, el_data = adjust_globe_data(lon_data, lat_data, el_data)
@@ -293,7 +307,7 @@ function main()
     x, y, z = compute_globe(el_data_filtered_first, R_erde, θ, φ, α[])
 
     # calculate elevation changes
-    available_years, year_to_index, index_to_year, _ = get_years_and_index()
+    available_years, year_to_index, index_to_year, _ = get_years_and_index(data_dir)
     dt_values = diff(collect(values(index_to_year)))  
     change_elevation = diff(all_elevation, dims=3) ./ reshape(dt_values, 1, 1, :)
 
