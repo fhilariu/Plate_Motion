@@ -29,8 +29,8 @@ function download_and_extract(destdir="data")
     # Entpacken
     extracted_folder = joinpath(destdir, "Scotese_Wright_2018_Maps_1-88_6minX6min_PaleoDEMS_nc")
     if !isdir(extracted_folder)
-        println("Extracting ZIP...")
-        run(`unzip -q $zip_path -d $destdir`)
+        println("Extracting ZIP with PowerShell...")
+        run(`powershell -command "Expand-Archive -LiteralPath '$zip_path' -DestinationPath '$destdir' -Force"`)
     else
         println("Dataset already extracted.")
     end
