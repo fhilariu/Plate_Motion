@@ -6,13 +6,14 @@
 [![Coverage](https://codecov.io/gh/fhilariu/PlateMotionSimulator.jl/branch/master/graph/badge.svg)](https://codecov.io/gh/fhilariu/PlateMotionSimulator.jl)
 
 
-This package simulates the evolution of plate tectonics from today to 540 Ma and is based on the dataset of Scotese & Wright (2018). It uses GLMakie to create an interactive 3D-Plot of the globe, whose surface represents a colored height model showing the topography of each timestep. Various GUI-elements such as input via textboxes and confirmation via buttons support the ease of use. Special features include the adjustment of exaggeration, manual limits for the colorbar and a selection of different colormaps as well as the storage of mp4-recordings in a specific section on the globe over the hole time period. A mode for displaying the height difference of 5 Ma each is also included. This code is indepedent of the currently used dataset and can therfore be easily applied to other datasets.
+This package simulates the evolution of plate tectonics from today to 540 Ma and is based on the dataset of Scotese & Wright (2018). It uses GLMakie to create an interactive 3D-Plot of the globe, whose surface represents a colored height model showing the topography of each timestep. Various GUI-elements such as input via textboxes and confirmation via buttons support the ease of use. Special features include the adjustment of exaggeration, manual limits for the colorbar and a selection of different colormaps as well as the storage of mp4-recordings in a specific section on the globe over the hole time period. A mode for displaying the height difference of 5 Ma each is also included. Furthermore this package provides a 2D visualization of the datasets in form of heatmaps. This julia code is indepedent of the currently used dataset and can therfore be easily applied to other datasets.
 
 
 ## Contents
 - **[PlateMotionSimulator.jl](#platemotionsimulator)**
   - [Contents](#contents)
   - [Installation](#installation)
+  - [2D-example](#2D-example)
   - [3D-example](#3D-example)
   - [Dependencies](#dependencies)
 
@@ -37,6 +38,11 @@ main()
 ```
 This step may take a while as the dataset will be downloaded from the EarthByte website.
 
+## 2D-example
+
+
+
+
 ## 3D-Example
 When everything is ready the GUI should look like that:
 
@@ -50,7 +56,9 @@ cd(Path/to/folder)
 ```
 
 ## Dependencies
-We use GLMakie
+We use NCDatasets.jl to read NetCDF-files from scientific datasets, GLMakie.jl to create 2D heatmaps and interactive 3D-plots with GUIs, GeoMakie.jl to project a surface on the 3D globe, Statistics.jl to compute statistic parameters of the elevation data, GeometryBasics.jl to manage geometry objects in background, Downloads.jl to download datasets from scientific websites, and Printf.jl for string formatting.
+
+By installing PlateMotionSimulator.jl, all of these dependencies should be installed automatically.
 
 
 
