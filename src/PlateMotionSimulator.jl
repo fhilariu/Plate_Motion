@@ -308,7 +308,7 @@ function main()
     x, y, z = compute_globe(el_data_filtered_first, R_erde, θ, φ, α[])
 
     # calculate elevation changes
-    available_years, year_to_index, index_to_year, _ = get_years_and_index(data_dir)
+    available_years, year_to_index, index_to_year, _ = get_years_and_index()
     dt_values = diff(collect(values(index_to_year)))  
     change_elevation = diff(all_elevation, dims=3) ./ reshape(dt_values, 1, 1, :)
 
