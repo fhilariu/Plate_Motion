@@ -13,8 +13,8 @@ This package simulates the evolution of plate tectonics from today to 540 Ma and
 - **[PlateMotionSimulator.jl](#platemotionsimulator)**
   - [Contents](#contents)
   - [Installation](#installation)
-  - [2D-Example](#2D-example)
-  - [3D-Example](#3D-example)
+  - [2D-Example](#2D-Example)
+  - [3D-Example](#3D-Example)
   - [Dependencies](#dependencies)
 
 ## Installation
