@@ -597,7 +597,5 @@ function main()
     display(GLMakie.Screen(), fig)
 end
 
-# call main function
-main()
 
 end
