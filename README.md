@@ -24,11 +24,11 @@ This julia code is indepedent of the currently used dataset and can therfore be 
 
 2. To download the Package you need the Package "Pkg". 
 ```
-"using Pkg"
+using Pkg
 ```
 3. Download the Pkg:
 ```
-"Pkg.add(url="https://github.com/fhilariu/Plate_Motion")"
+Pkg.add(url="https://github.com/fhilariu/Plate_Motion")
 ```
 4. Load the Package:
 ```
@@ -36,9 +36,22 @@ using PlateMotionSimulator
 ```
 
 ## 2D-example
+### Single pictures
+To generate 2D-heatmaps from the Dataset use the function: 
+```
+picture_heatmap()
+```
+This will create an heatmap for every single timestep. 
+![Heatmaps based on Scotese   Wright (2018) - Year 0  Ma](https://github.com/user-attachments/assets/35dc2939-0755-45d1-9b80-b97c85f7a8c5)
 
+### 2D video 
+To get a 2D animation of the plate tectonics use the function:
+```
+record_heatmap()
+```
+This will generate a .mp4 of all timesteps
 
-
+***_note that both functions need a storage location_***
 
 ## 3D-Example
 Start the GUI:
@@ -52,7 +65,7 @@ When everything is ready the GUI should look like that:
 
 Now you're ready to go. 
 
-******_Note if you want to save the .mp4 you must provide a file path_******
+******_Note that there has to be a storage location to save the .mp4_******
 ```
 cd(Path/to/folder)
 ```
