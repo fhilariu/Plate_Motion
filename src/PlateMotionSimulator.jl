@@ -6,6 +6,7 @@ using GeometryBasics
 using GeoMakie
 using Downloads
 using Printf
+using Statistics
 
 export main
 
