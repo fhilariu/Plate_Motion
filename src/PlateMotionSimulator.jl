@@ -9,6 +9,8 @@ using Printf
 using Statistics
 
 export main
+export picture_heatmap
+export record_heatmap
 
 
 # backend for GLMakie
