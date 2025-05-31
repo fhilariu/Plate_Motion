@@ -11,6 +11,9 @@ using Statistics
 export main
 
 
+# backend for GLMakie
+GLMakie.activate!()
+Makie.inline!(true)
 
 # function to generate temporal directory for datasets
 function download_and_extract(destdir="data")
@@ -40,11 +43,6 @@ function download_and_extract(destdir="data")
 
     return extracted_folder
 end
-
-
-# backend for GLMakie
-GLMakie.activate!()
-Makie.inline!(true)
 
 # function to extract years and index
 function get_years_and_index()
