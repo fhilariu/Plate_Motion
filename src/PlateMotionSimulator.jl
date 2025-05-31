@@ -1,4 +1,4 @@
-module PlateMotionSimulator
+module Plate_Motion
 
 using GLMakie
 using NCDatasets
