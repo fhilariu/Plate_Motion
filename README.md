@@ -10,12 +10,11 @@ This package simulates the evolution of plate tectonics from today to 540 Ma and
 
 
 ## Contents
-- PlateMotionSimulator.jl
-  - Contents
-  - Installation
-  - 3D-example
-  - Dependencies
-
+- **[PlateMotionSimulator.jl](#platemotionsimulator)**
+  - [Contents](#contents)
+  - [Installation](#installation)
+  - [3D-example](#3D-example)
+  - [Dependencies](#dependencies)
 
 ## Installation
 1. Start Julia
@@ -47,7 +46,8 @@ Now you're ready to go.
 
 ******_Note if you want to save the .mp4 you need an active environment. Otherwise there is no path to save it_******
 
-##
+## Dependencies
+We use GLMakie
 
 
 
