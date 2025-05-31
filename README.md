@@ -35,7 +35,7 @@ Pkg.add(url="https://github.com/fhilariu/Plate_Motion")
 using PlateMotionSimulator
 ```
 
-## 2D-example
+## 2D-Example
 ### Single pictures
 To generate 2D-heatmaps from the Dataset use the function: 
 ```
@@ -52,7 +52,8 @@ record_heatmap()
 This will generate a .mp4 of all timesteps
 ![Heatmps_short](https://github.com/user-attachments/assets/7f84ee62-63e4-4f7e-b911-e413b1eeb20b)
 
-***_note that both functions need a storage location_***
+> [!IMPORTANT]
+>***_note that both functions need a storage location_***
 
 ## 3D-Example
 Start the GUI:
@@ -65,8 +66,8 @@ When everything is ready the GUI should look like that:
 <img width="1440" alt="PlateMotionSimulator" src="https://github.com/user-attachments/assets/466b4b7c-491b-461e-b406-1fec2042e0c8" />
 
 Now you're ready to go. 
-
-******_Note that there has to be a storage location to save the .mp4_******
+> [!IMPORTANT]
+>***_Note that there has to be a storage location to save the .mp4_***
 ```
 cd(Path/to/folder)
 ```
