@@ -10,7 +10,9 @@ using Statistics
 
 export main
 
-# temporal directory
+
+
+# function to generate temporal directory for datasets
 function download_and_extract(destdir="data")
     url = "https://zenodo.org/record/5460860/files/Scotese_Wright_2018_Maps_1-88_6minX6min_PaleoDEMS_nc.zip?download=1"
     zip_path = joinpath(destdir, "Scotese_Wright_2018_Maps_1-88_6minX6min_PaleoDEMS_nc.zip")
@@ -19,7 +21,7 @@ function download_and_extract(destdir="data")
         mkpath(destdir)
     end
 
-    # Download ZIP falls noch nicht da
+    # download zip file
     if !isfile(zip_path)
         println("Downloading dataset...")
         Downloads.download(url, zip_path)
@@ -27,7 +29,7 @@ function download_and_extract(destdir="data")
         println("Dataset ZIP already downloaded.")
     end
     
-    # Entpacken
+    # unpack zip files
     extracted_folder = joinpath(destdir, "Scotese_Wright_2018_Maps_1-88_6minX6min_PaleoDEMS_nc")
     if !isdir(extracted_folder)
         println("Extracting ZIP with PowerShell...")
@@ -72,8 +74,10 @@ end
 
 # function to read data from nc files
 function read_data()
+    # call function to get years and index
     _, _, _, nc_file_paths = get_years_and_index()
 
+    # generate longitude and latitude from first nc file
     data = NCDataset(nc_file_paths[1])
     lon  = data["longitude"]
     lat  = data["latitude"]
@@ -102,6 +106,7 @@ end
 
 # function to call and save pictures of heatmaps
 function picture_heatmap()
+    # call functions to read data & get years and index
     all_longitude, all_latitude, all_elevation = read_data()
     available_years, year_to_index, index_to_year, _ = get_years_and_index()
 
@@ -126,6 +131,7 @@ end
 
 # function to save heatmaps as mp4
 function record_heatmap()
+    # call functions to read data & get years and index
     all_longitude, all_latitude, all_elevation = read_data()
     _, _, index_to_year, _ = get_years_and_index()
 
@@ -233,14 +239,17 @@ end
 
 # function to compute equator
 function compute_equator()
+    # call functions
     lon_data, lat_data, el_data, all_elevation = initialize_globe_attributes()
     lon_data, lat_data, el_data = adjust_globe_data(lon_data, lat_data, el_data)
     R_erde, _, _, φ = initialize_globe_parameters(lat_data, lon_data)
 
+    # set height above surface
     max_elevation = maximum(all_elevation)
     safety_margin = 20.0 * max_elevation  
     height_above_surface = max_elevation + safety_margin
 
+    # compute coordinates of equator
     eq_x = (R_erde .+ height_above_surface) .* cos.(φ)
     eq_y = (R_erde .+ height_above_surface) .* sin.(φ)
     eq_z = (R_erde .+ height_above_surface) .* zeros(length(φ)) 
@@ -291,20 +300,20 @@ end
 
 # main function to run simulation
 function main()
+    # call functions to read data and initialize globe attributes
     data_dir = download_and_extract("data")
-    
-    α = Observable(50.0)
     lon_data, lat_data, el_data, all_elevation = initialize_globe_attributes()
     lon_data, lat_data, el_data = adjust_globe_data(lon_data, lat_data, el_data)
     R_erde, MT_EVEREST_HEIGHT, θ, φ = initialize_globe_parameters(lat_data, lon_data)
     eq_x, eq_y, eq_z = compute_equator()
 
     # calculate initial parameters of globe
-    el_data_filtered = zeros(3602,1802)
     el_data_first    = all_elevation[:, :, 1]
     el_data_first    = vcat(el_data_first, el_data_first[1, :]') 
     el_data_first    = hcat(el_data_first, el_data_first[:, 1]) 
+    el_data_filtered = zeros(size(el_data_first, 1), size(el_data_first, 2))
     el_data_filtered_first = filter_outliers(el_data_first, MT_EVEREST_HEIGHT)
+    α = Observable(50.0)
     x, y, z = compute_globe(el_data_filtered_first, R_erde, θ, φ, α[])
 
     # calculate elevation changes
@@ -486,7 +495,7 @@ function main()
                     println("Error: No next year found for year $selected_year Ma. Maximum year = 535 Ma")
                 end
                 el_data = change_elevation[:, :, i]
-                if size(el_data, 1) != 3602 || size(el_data, 2) != 1802
+                if size(el_data, 1) != size(el_data_first, 1) || size(el_data, 2) != size(el_data_first, 2)
                     el_data = vcat(el_data, el_data[1, :]') 
                     el_data = hcat(el_data, el_data[:, 1])  
                 end
@@ -494,7 +503,7 @@ function main()
                 label.text = "Elevation Rate: $selected_year Ma → $next_year Ma [m/Ma]"
             else
                 el_data = all_elevation[:, :, i]
-                if size(el_data, 1) != 3602 || size(el_data, 2) != 1802
+                if size(el_data, 1) != size(el_data_first, 1) || size(el_data, 2) != size(el_data_first, 2)
                     el_data = vcat(el_data, el_data[1, :]')  
                     el_data = hcat(el_data, el_data[:, 1])  
                 end
@@ -525,7 +534,8 @@ function main()
         println("Starting to record mp4")
         is_playing[] = true 
 
-        if use_rev[]  # Reverse Playback
+        # reverse playback
+        if use_rev[]  
             record(fig, "playback_reverse.mp4", framerate=30) do io
                 while is_playing[] && idx[] > 1
                     idx[] -= 1
@@ -537,7 +547,8 @@ function main()
                 is_playing[] = false
                 println("Reverse MP4 recording finished and saved")
             end
-        else  # Normales Playback
+        else  
+            # forward playback
             record(fig, "playback.mp4", framerate=30) do io
                 while is_playing[] && idx[] < length(available_years)
                     idx[] += 1
