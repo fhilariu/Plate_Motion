@@ -8,9 +8,7 @@ using Downloads
 using Printf
 using Statistics
 
-export main
-export picture_heatmap
-export record_heatmap
+export main, picture_heatmap, record_heatmap
 
 
 # backend for GLMakie
