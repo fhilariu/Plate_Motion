@@ -50,6 +50,7 @@ To get a 2D animation of the plate tectonics use the function:
 record_heatmap()
 ```
 This will generate a .mp4 of all timesteps
+![Heatmps_short](https://github.com/user-attachments/assets/7f84ee62-63e4-4f7e-b911-e413b1eeb20b)
 
 ***_note that both functions need a storage location_***
 
