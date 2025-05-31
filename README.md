@@ -44,7 +44,10 @@ When everything is ready the GUI should look like that:
 
 Now you're ready to go. 
 
-******_Note if you want to save the .mp4 you need an active environment. Otherwise there is no path to save it_******
+******_Note if you want to save the .mp4 you must provide a file path_******
+```
+cd(Path/to/folder)
+```
 
 ## Dependencies
 We use GLMakie
