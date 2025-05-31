@@ -34,11 +34,6 @@ This julia code is indepedent of the currently used dataset and can therfore be 
 ```
 using PlateMotionSimulator
 ```
-5. Start the GUI:
-```
-main()
-```
-This step may take a while as the dataset will be downloaded from the EarthByte website.
 
 ## 2D-example
 
@@ -46,6 +41,11 @@ This step may take a while as the dataset will be downloaded from the EarthByte 
 
 
 ## 3D-Example
+Start the GUI:
+```
+main()
+```
+This step may take a while as the dataset will be downloaded from the EarthByte website.
 When everything is ready the GUI should look like that:
 
 <img width="1440" alt="PlateMotionSimulator" src="https://github.com/user-attachments/assets/466b4b7c-491b-461e-b406-1fec2042e0c8" />
