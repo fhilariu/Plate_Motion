@@ -38,14 +38,16 @@ main()
 ```
 This step may take a while as the dataset will be downloaded from the EarthByte website.
 
-### 3D-Example
+## 3D-Example
 When everything is ready the GUI should look like that:
 
 <img width="1440" alt="PlateMotionSimulator" src="https://github.com/user-attachments/assets/466b4b7c-491b-461e-b406-1fec2042e0c8" />
 
 Now you're ready to go. 
 
-### 
+******_Note if you want to save the .mp4 you need an active environment. Otherwise there is no path to save it_******
+
+##
 
 
 
