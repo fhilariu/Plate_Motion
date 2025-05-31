@@ -11,7 +11,7 @@ export main
 
 # temporal directory
 function download_and_extract(destdir="data")
-    url = "https://zenodo.org/records/5460860/files/Scotese_Wright_2018_Maps_1-88_6minX6min_PaleoDEMS_nc.zip?download=1"
+    url = "https://zenodo.org/records/5460860"
     zip_path = joinpath(destdir, "Scotese_Wright_2018_Maps_1-88_6minX6min_PaleoDEMS_nc.zip")
     
     if !isdir(destdir)
