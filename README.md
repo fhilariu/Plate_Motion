@@ -17,7 +17,7 @@ This package simulates the evolution of plate tectonics from today to 540 Ma and
   - Dependencies
 
 
-## Getting started
+## Installation
 1. Start Julia
 
 2. To download the Package you need the Package "Pkg". 
@@ -38,7 +38,7 @@ main()
 ```
 This step may take a while as the dataset will be downloaded from the EarthByte website.
 
-### Plate motion simulator
+### 3D-Example
 When everything is ready the GUI should look like that:
 
 <img width="1440" alt="PlateMotionSimulator" src="https://github.com/user-attachments/assets/466b4b7c-491b-461e-b406-1fec2042e0c8" />
