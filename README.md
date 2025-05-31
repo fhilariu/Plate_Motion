@@ -58,7 +58,7 @@ cd(Path/to/folder)
 ```
 
 ## Dependencies
-We use [NCDatasets.jl[(https://github.com/JuliaGeo/NCDatasets.jl) to read NetCDF-files from scientific datasets, GLMakie.jl to create 2D heatmaps and interactive 3D-plots with GUIs, GeoMakie.jl to project a surface on the 3D globe, Statistics.jl to compute statistic parameters of the elevation data, GeometryBasics.jl to manage geometry objects in background, Downloads.jl to download datasets from scientific websites, and Printf.jl for string formatting.
+We use [NCDatasets.jl](https://github.com/JuliaGeo/NCDatasets.jl) to read NetCDF-files from scientific datasets, [GLMakie.jl](https://github.com/JuliaPlots/GLMakie.jl) to create 2D heatmaps and interactive 3D-plots with GUIs, [GeoMakie.jl](https://github.com/MakieOrg/GeoMakie.jl) to project a surface on the 3D globe, [Statistics.jl](https://github.com/JuliaStats/Statistics.jl) to compute statistic parameters of the elevation data, [GeometryBasics.jl](https://github.com/JuliaGeometry/GeometryBasics.jl) to manage geometry objects in background, [Downloads.jl](https://github.com/JuliaLang/Downloads.jl) to download datasets from scientific websites, and [Printf.jl](https://github.com/JuliaLang/julia/tree/master/stdlib/Printf) for string formatting.
 
 By installing PlateMotionSimulator.jl, all of these dependencies should be installed automatically.
 
